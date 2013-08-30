@@ -10,6 +10,13 @@
 </#if>
 </p>
 <ul>
+<#if trigger == "start">
+    <li>Params: 
+  <#list executionData.context.option?keys as prop>
+    ${prop} = ${executionData.context.option[prop]}
+  </#list>
+    </li>
+</#if>
     <li>User: ${executionData.context.job.username}</li>
     <li>ExecId: ${executionData.context.job.execid}</li>
 </ul>

@@ -17,12 +17,15 @@
 package com.hbakkum.rundeck.plugins.hipchat;
 
 import com.dtolabs.rundeck.core.plugins.Plugin;
+import com.dtolabs.rundeck.core.plugins.configuration.PropertyScope;
 import com.dtolabs.rundeck.plugins.descriptions.PluginDescription;
 import com.dtolabs.rundeck.plugins.descriptions.PluginProperty;
 import com.dtolabs.rundeck.plugins.notification.NotificationPlugin;
+
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -74,13 +77,16 @@ public class HipChatNotificationPlugin implements NotificationPlugin {
     @PluginProperty(
             title = "Room",
             description = "HipChat room to send notification message to.",
-            required = true)
+            required = true,
+            scope = PropertyScope.Project
+            )
     private String room;
 
     @PluginProperty(
             title = "API Auth Token",
             description = "HipChat API authentication token. Notification level token will do.",
-            required = true)
+            required = true,
+            scope = PropertyScope.Project)
     private String apiAuthToken;
 
     /**
@@ -92,7 +98,6 @@ public class HipChatNotificationPlugin implements NotificationPlugin {
      * @throws HipChatNotificationPluginException when any error occurs sending the HipChat message
      * @return true, if the HipChat API response indicates a message was successfully delivered to a chat room
      */
-    @Override
     public boolean postNotification(String trigger, Map executionData, Map config) {
         if (!TRIGGER_NOTIFICATION_DATA.containsKey(trigger)) {
             throw new IllegalArgumentException("Unknown trigger type: [" + trigger + "].");
