@@ -77,8 +77,7 @@ public class HipChatNotificationPlugin implements NotificationPlugin {
     @PluginProperty(
             title = "Room",
             description = "HipChat room to send notification message to.",
-            required = true,
-            scope = PropertyScope.Project
+            required = true
             )
     private String room;
 
@@ -103,12 +102,13 @@ public class HipChatNotificationPlugin implements NotificationPlugin {
             throw new IllegalArgumentException("Unknown trigger type: [" + trigger + "].");
         }
 
+        String from = HIPCHAT_MESSAGE_FROM_NAME;
         String color = TRIGGER_NOTIFICATION_DATA.get(trigger).color;
         String message = generateMessage(trigger, executionData, config);
         String params = String.format(HIPCHAT_API_MESSAGE_ROOM_QUERY,
                 urlEncode(apiAuthToken),
                 urlEncode(room),
-                urlEncode(HIPCHAT_MESSAGE_FROM_NAME),
+                urlEncode(from),
                 urlEncode(message),
                 urlEncode(color));
 
