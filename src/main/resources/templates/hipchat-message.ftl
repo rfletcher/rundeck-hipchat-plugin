@@ -15,7 +15,7 @@
     <#if trigger == "start">
       with these parameters:<br/>&nbsp;&nbsp;&nbsp;&nbsp;
       <#list executionData.context.option?keys?sort as prop>
-        ${prop}: ${executionData.context.option[prop]}<#if prop_has_next>,</#if>
+        ${prop}: ${executionData.context.option[prop]}<#if prop_has_next>;</#if>
       </#list>
     <#elseif trigger == "failure">
       has failed
