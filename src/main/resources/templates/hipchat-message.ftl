@@ -4,13 +4,12 @@
       ${executionData.context.job.username?capitalize} started
     </#if>
 
-    <#if executionData.job.group?has_content>
-      ${executionData.job.group}/${executionData.job.name}
-    <#else>
-      ${executionData.job.name}
-    </#if>
+    <a href="${executionData.href}">
+      <#if executionData.job.group?has_content>${executionData.job.group}/</#if><#--
+      -->${executionData.job.name}<#--
+    --></a>
 
-    <a href="${executionData.href}">#${executionData.context.job.execid}</a>
+    #${executionData.context.job.execid}
 
     <#if trigger == "start">
       with these parameters:<br/>&nbsp;&nbsp;&nbsp;&nbsp;
