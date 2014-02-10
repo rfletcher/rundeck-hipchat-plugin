@@ -59,7 +59,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Rundeck-Plugin-Classnames>com.hbakkum.rundeck.plugins.hipchat.HipChatNotificationPlugin-rfletcher</Rundeck-Plugin-Classnames>
+                            <Rundeck-Plugin-Classnames>com.hbakkum.rundeck.plugins.hipchat.HipChatNotificationPlugin</Rundeck-Plugin-Classnames>
                             <Rundeck-Plugin-Version>1.1.1</Rundeck-Plugin-Version>
                             <Rundeck-Plugin-Archive>true</Rundeck-Plugin-Archive>
                             <Rundeck-Plugin-File-Version>${project.version}</Rundeck-Plugin-File-Version>
